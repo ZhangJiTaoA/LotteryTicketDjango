@@ -1,6 +1,10 @@
 FROM python:3.10.8
 
 WORKDIR /usr/src/app
+
+# 使用 HTTPS 协议访问容器云调用证书安装
+RUN apt install ca-certificates -y
+
 COPY . .
 
 RUN mkdir ~/.pip && touch ~/.pip/pip.conf && \
