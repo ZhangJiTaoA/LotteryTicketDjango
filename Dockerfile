@@ -18,6 +18,6 @@ ENV PYTHONPATH=/usr/src/app
 
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
-EXPOSE 80
+EXPOSE 8000
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:80"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
