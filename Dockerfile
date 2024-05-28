@@ -7,7 +7,8 @@ RUN mkdir ~/.pip && touch ~/.pip/pip.conf && \
     echo "[global]" >> ~/.pip/pip.conf && \
     echo "index-url = https://pypi.tuna.tsinghua.edu.cn/simple" >> ~/.pip/pip.conf && \
     pip install --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+    pip install --no-cache-dir -r requirements.txt &&\
+    python manage.py migrate
 
 ENV PYTHONPATH=/usr/src/app
 
