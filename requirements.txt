@@ -1,0 +1,11 @@
+lxml==5.1.0
+numpy==1.26.0
+pandas==2.2.0
+urllib3==1.26.18
+ujson==5.4.0
+requests==2.31.0
+pymysql==1.1.0
+beautifulsoup4==4.12.2
+sqlalchemy==2.0.30
+django==5.0.3
+django-extensions==3.2.3
