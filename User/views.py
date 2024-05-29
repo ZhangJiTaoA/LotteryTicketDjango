@@ -8,12 +8,30 @@ from datetime import datetime
 
 # Create your views here.
 
-# 用户登录
+# 用户登录——通过自己服务器
+# def login(request):
+#     print(datetime.now().strftime(constant.specific_format))
+#     code = request.GET.get("code")
+#     print(code)
+#     result_json = getOpenid(code)
+#     user_info = queryUserByOpenid(result_json)
+#     flag = None
+#     if ("logintime" in user_info.keys()):  # 如果查询到用户信息则返回以下内容
+#         print(user_info)
+#     else:  # 没有用户信息则插入用户信息。
+#         flag = insertUser(user_info['openid'], user_info['session_key'], constant.init_score, logintime=datetime.now().strftime(constant.specific_format))
+#     user_info["insert"] = flag
+#     return JsonResponse(user_info)
+
 def login(request):
     print(datetime.now().strftime(constant.specific_format))
-    code = request.GET.get("code")
-    print(code)
-    result_json = getOpenid(code)
+    print(request.headers)
+    openid = request.headers.get("X-WX-OPENID")
+
+    result_json = {
+        'openid': request.headers.get("X-WX-OPENID"),
+        'session_key': ''
+    }
     user_info = queryUserByOpenid(result_json)
     flag = None
     if ("logintime" in user_info.keys()):  # 如果查询到用户信息则返回以下内容
@@ -22,6 +40,9 @@ def login(request):
         flag = insertUser(user_info['openid'], user_info['session_key'], constant.init_score, logintime=datetime.now().strftime(constant.specific_format))
     user_info["insert"] = flag
     return JsonResponse(user_info)
+
+
+
 
 
 def getOpenid(code):
